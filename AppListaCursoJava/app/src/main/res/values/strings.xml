@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppListaCursoJava</string>
+    <string name="txt_titulo">Aplicativo Lista Android Java</string>
+    <string name="txt_hint_edit_primeironome">Primeiro Nome</string>
+    <string name="txt_hind_edit_sobrenome">Sobrenome</string>
+    <string name="txt_hint_edit_nomecurso">Nome do Curso Desejado</string>
+    <string name="txt_button_limpar">LIMPAR</string>
+    <string name="txt_button_salvar">SALVAR</string>
+    <string name="txt_button_finalizar">FINALIZAR</string>
+    <string name="txt_telef">Telefone de Contato</string>
+</resources>
