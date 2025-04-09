@@ -28,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         pessoa = new Pessoa();
+        //atribuir dados ao objeto conforme modelo template
+        pessoa.setPrimeiroNome("Helio");
+        pessoa.setSobreNome("Basilone Paiva");
+        pessoa.setCursoDesejado("Analise em Android");
+        pessoa.setTelefoneContato("19 9911224455");
+
+        int parada = 0; //criando ponto de interrupção
+
 
     }
 }
