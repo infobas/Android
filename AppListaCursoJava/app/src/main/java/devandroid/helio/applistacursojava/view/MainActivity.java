@@ -14,7 +14,13 @@ import devandroid.helio.applistacursojava.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
 
-    Pessoa pessoa;
+    Pessoa pessoa; //objeto é um tipo de dado
+    Pessoa outraPessoa; //objeto é usado para sets
+
+    String dadosPessoa; //pascal case e camel case
+    String dadosOutraPessoa; // gets
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +40,30 @@ public class MainActivity extends AppCompatActivity {
         pessoa.setCursoDesejado("Analise em Android");
         pessoa.setTelefoneContato("19 9911224455");
 
-        int parada = 0; //criando ponto de interrupção
+        outraPessoa = new Pessoa();
+        outraPessoa.setPrimeiroNome("Marcelo");
+        outraPessoa.setSobreNome("Cabelo de Buneca");
+        outraPessoa.setCursoDesejado("Analise em Android");
+        outraPessoa.setTelefoneContato("19 9911224466");
+
+
+        dadosPessoa = "Primeiro nome: ";
+        dadosPessoa += pessoa.getPrimeiroNome(); //opção += concatena
+        dadosPessoa += "Sobrenome: ";
+        dadosPessoa += pessoa.getSobreNome();
+        dadosPessoa += "Curso Desejado: ";
+        dadosPessoa += pessoa.getCursoDesejado();
+        dadosPessoa += "Telefone de Contato: ";
+        dadosPessoa += pessoa.getTelefoneContato();
+
+        dadosOutraPessoa = "Primeiro nome: ";
+        dadosOutraPessoa += pessoa.getPrimeiroNome(); //opção += concatena
+        dadosOutraPessoa += "Sobrenome: ";
+        dadosOutraPessoa += pessoa.getSobreNome();
+        dadosOutraPessoa += "Curso Desejado: ";
+        dadosOutraPessoa += pessoa.getCursoDesejado();
+        dadosOutraPessoa += "Telefone de Contato: ";
+        dadosOutraPessoa += pessoa.getTelefoneContato();
 
 
     }
