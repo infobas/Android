@@ -14,10 +14,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import devandroid.helio.applistacursojava.R;
+import devandroid.helio.applistacursojava.controller.PessoaController;
 import devandroid.helio.applistacursojava.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    PessoaController controller; //controladora
 
     Pessoa pessoa; //classe Pessoa objeto pessoa é um tipo de dado
     Pessoa outraPessoa; //Classe Pessoa objeto outraPessoa é usado para sets
@@ -44,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        controller = new PessoaController(); //controladora
+        controller.toString();
+
 
         pessoa = new Pessoa();
         //atribuir dados ao objeto conforme modelo template
@@ -102,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "SALVO!" + pessoa.toString(), Toast.LENGTH_LONG).show();
+
+                controller.salvar(pessoa);
+
 
             }
         });
