@@ -2,6 +2,18 @@ package devandroid.helio.applistacursojava.model;
 
 public class Pessoa {
 
+
+    public Pessoa(){}
+
+    //construtor
+    //atributos - objetos - molde - modelo - template
+    //metodos de acesso gets and sets
+    // f na estrutura são propriedades
+    private String primeiroNome; // atributos
+    private String sobreNome;
+    private String cursoDesejado;
+    private String telefoneContato;
+
     public String getPrimeiroNome() {
         return primeiroNome;
     }
@@ -33,16 +45,15 @@ public class Pessoa {
     public void setTelefoneContato(String telefoneContato) {
         this.telefoneContato = telefoneContato;
     }
-
-    //construtor
-    //atributos - objetos - molde - modelo - template
-    //metodos de acesso gets and sets
-    // f na estrutura são propriedades
-    private String primeiroNome; // atributos
-    private String sobreNome;
-    private String cursoDesejado;
-    private String telefoneContato;
-
-
-    public Pessoa(){}
+    //comando inicia com @tos e atraves o wizard cria todo codigo abaixo
+    //herança e polimorfismo
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "primeiroNome='" + primeiroNome + '\'' +
+                ", sobreNome='" + sobreNome + '\'' +
+                ", cursoDesejado='" + cursoDesejado + '\'' +
+                ", telefoneContato='" + telefoneContato + '\'' +
+                '}';
+    }
 }

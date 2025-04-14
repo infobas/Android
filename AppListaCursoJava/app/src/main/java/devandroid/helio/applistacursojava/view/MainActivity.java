@@ -1,6 +1,11 @@
 package devandroid.helio.applistacursojava.view;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,11 +19,21 @@ import devandroid.helio.applistacursojava.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
 
-    Pessoa pessoa; //objeto é um tipo de dado
-    Pessoa outraPessoa; //objeto é usado para sets
+    Pessoa pessoa; //classe Pessoa objeto pessoa é um tipo de dado
+    Pessoa outraPessoa; //Classe Pessoa objeto outraPessoa é usado para sets
 
     String dadosPessoa; //pascal case e camel case
     String dadosOutraPessoa; // gets
+
+    EditText editPrimeiroNome; //classe EditText objeto editPrimeiroNome
+    EditText editSobrenome;
+    EditText editNomeCurso;
+    EditText editTelefoneContato;
+    Button btnlimpar;
+    Button btnsalvar;
+    Button btnfinal;
+
+
 
 
 
@@ -35,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         pessoa = new Pessoa();
         //atribuir dados ao objeto conforme modelo template
-        pessoa.setPrimeiroNome("Helio");
-        pessoa.setSobreNome("Basilone Paiva");
-        pessoa.setCursoDesejado("Analise em Android");
+        pessoa.setPrimeiroNome("Álvaro");
+        pessoa.setSobreNome("B.P. Basilone Paiva");
+        pessoa.setCursoDesejado("Robótica Aplicada");
         pessoa.setTelefoneContato("19 9911224455");
 
         outraPessoa = new Pessoa();
@@ -46,7 +61,63 @@ public class MainActivity extends AppCompatActivity {
         outraPessoa.setCursoDesejado("Analise em Android");
         outraPessoa.setTelefoneContato("19 9911224466");
 
+        //tela do dispositivo
+        editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
+        editSobrenome = findViewById(R.id.editSobrenome);
+        editNomeCurso = findViewById(R.id.editNomeCurso);
+        editTelefoneContato = findViewById(R.id.editTelefoneContato);
 
+        btnlimpar = findViewById(R.id.btnlimpar);
+        btnsalvar = findViewById(R.id.btnsalvar);
+        btnfinal = findViewById(R.id.btnfinal);
+
+        editPrimeiroNome.setText(pessoa.getPrimeiroNome());
+        editSobrenome.setText(pessoa.getSobreNome());
+        editNomeCurso.setText(pessoa.getCursoDesejado());
+        editTelefoneContato.setText(pessoa.getTelefoneContato());
+
+
+        btnlimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editPrimeiroNome.setText("");
+                editSobrenome.setText("");
+                editNomeCurso.setText("");
+                editTelefoneContato.setText("");
+
+            }
+        });
+
+        btnfinal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"Volte Logo!",Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+
+        btnsalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pessoa.setPrimeiroNome(editPrimeiroNome.getText().toString());
+                pessoa.setSobreNome(editSobrenome.getText().toString());
+                pessoa.setCursoDesejado(editNomeCurso.getText().toString());
+                pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
+
+                Toast.makeText(MainActivity.this,"SALVO!"+pessoa.toString(),Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+
+
+
+        // fim tela
+
+
+
+/*
         dadosPessoa = "Primeiro nome: ";
         dadosPessoa += pessoa.getPrimeiroNome(); //opção += concatena
         dadosPessoa += "Sobrenome: ";
@@ -64,6 +135,12 @@ public class MainActivity extends AppCompatActivity {
         dadosOutraPessoa += pessoa.getCursoDesejado();
         dadosOutraPessoa += "Telefone de Contato: ";
         dadosOutraPessoa += pessoa.getTelefoneContato();
+
+ */
+
+        Log.i("POO Adroid","obj pessoa: "+pessoa.toString());
+        Log.i("POO Adroid","obj outrapessoa: "+outraPessoa.toString());
+
 
 
     }
