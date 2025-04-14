@@ -1,4 +1,4 @@
 package devandroid.helio.applistacursojava.controller;
 
-public class CursoController {
+public class PessoaController {
 }
