@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnfinal;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         btnfinal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Volte Logo!",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Volte Logo!", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
@@ -104,18 +101,13 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setCursoDesejado(editNomeCurso.getText().toString());
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
-                Toast.makeText(MainActivity.this,"SALVO!"+pessoa.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "SALVO!" + pessoa.toString(), Toast.LENGTH_LONG).show();
 
             }
         });
 
 
-
-
-
         // fim tela
-
-
 
 /*
         dadosPessoa = "Primeiro nome: ";
@@ -138,10 +130,8 @@ public class MainActivity extends AppCompatActivity {
 
  */
 
-        Log.i("POO Adroid","obj pessoa: "+pessoa.toString());
-        Log.i("POO Adroid","obj outrapessoa: "+outraPessoa.toString());
-
-
+        Log.i("POO Adroid", "obj pessoa: " + pessoa.toString());
+        Log.i("POO Adroid", "obj outrapessoa: " + outraPessoa.toString());
 
     }
 }
