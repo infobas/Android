@@ -21,6 +21,9 @@ import devandroid.helio.applistacursojava.model.Pessoa;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
+    //torna shared  listaVip publico
+    SharedPreferences.Editor listaVip;
+
     //comando abaixo psfs auto
     public static final String NOME_PREFERENCES = "pref_listavip";
 
@@ -29,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
     PessoaController controller; //controladora
 
     Pessoa pessoa; //classe Pessoa objeto pessoa é um tipo de dado
-    Pessoa outraPessoa; //Classe Pessoa objeto outraPessoa é usado para sets
+    //Pessoa outraPessoa; //Classe Pessoa objeto outraPessoa é usado para sets
 
     String dadosPessoa; //pascal case e camel case
-    String dadosOutraPessoa; // gets
+    //String dadosOutraPessoa; // gets
 
     EditText editPrimeiroNome; //classe EditText objeto editPrimeiroNome
     EditText editSobrenome;
@@ -55,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         });
         //criando local temporário para informações
         preferences = getSharedPreferences(NOME_PREFERENCES,0);
-        SharedPreferences.Editor listaVip = preferences.edit();
+        //SharedPreferences.Editor listaVip = preferences.edit();
+        listaVip = preferences.edit(); //shared ficou publico acima
 
 
         controller = new PessoaController(); //controladora
@@ -63,17 +67,30 @@ public class MainActivity extends AppCompatActivity {
 
 
         pessoa = new Pessoa();
+        //nova aula v2
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", ""));
+        pessoa.setSobreNome(preferences.getString("sobreNome", ""));
+        pessoa.setCursoDesejado(preferences.getString("nomeCurso", ""));
+        pessoa.setTelefoneContato(preferences.getString("telefoneContato", ""));
+        //fim v2
+
+
+        //retirado para evolução da aula
+        /*
         //atribuir dados ao objeto conforme modelo template
         pessoa.setPrimeiroNome("Álvaro");
         pessoa.setSobreNome("B.P. Basilone Paiva");
         pessoa.setCursoDesejado("Robótica Aplicada");
         pessoa.setTelefoneContato("19 9911224455");
 
+
         outraPessoa = new Pessoa();
         outraPessoa.setPrimeiroNome("Marcelo");
         outraPessoa.setSobreNome("Cabelo de Buneca");
         outraPessoa.setCursoDesejado("Analise em Android");
         outraPessoa.setTelefoneContato("19 9911224466");
+        */
+
 
         //tela do dispositivo
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
@@ -81,15 +98,24 @@ public class MainActivity extends AppCompatActivity {
         editNomeCurso = findViewById(R.id.editNomeCurso);
         editTelefoneContato = findViewById(R.id.editTelefoneContato);
 
-        btnlimpar = findViewById(R.id.btnlimpar);
-        btnsalvar = findViewById(R.id.btnsalvar);
-        btnfinal = findViewById(R.id.btnfinal);
-
+        //nova aula v2
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobrenome.setText(pessoa.getSobreNome());
         editNomeCurso.setText(pessoa.getCursoDesejado());
         editTelefoneContato.setText(pessoa.getTelefoneContato());
+        //v2
 
+        btnlimpar = findViewById(R.id.btnlimpar); //setando o botao limpar com a classe main activity
+        btnsalvar = findViewById(R.id.btnsalvar);
+        btnfinal = findViewById(R.id.btnfinal);
+
+        //retirado para evolução da aula
+/*
+        editPrimeiroNome.setText(pessoa.getPrimeiroNome());
+        editSobrenome.setText(pessoa.getSobreNome());
+        editNomeCurso.setText(pessoa.getCursoDesejado());
+        editTelefoneContato.setText(pessoa.getTelefoneContato());
+*/
 
         btnlimpar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
                 editSobrenome.setText("");
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
+
+                listaVip.clear();
+                listaVip.apply();
 
             }
         });
@@ -118,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setCursoDesejado(editNomeCurso.getText().toString());
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
-                Toast.makeText(MainActivity.this, "SALVO!" + pessoa.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "SALVO!: " + pessoa.toString(), Toast.LENGTH_LONG).show();
 
                 //para salvar em local temporario
                 listaVip.putString("primeiroNome",pessoa.getPrimeiroNome());
@@ -159,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
  */
 
         Log.i("POO Adroid", "obj pessoa: " + pessoa.toString());
-        Log.i("POO Adroid", "obj outrapessoa: " + outraPessoa.toString());
+       // Log.i("POO Adroid", "obj outrapessoa: " + outraPessoa.toString());
 
     }
 }
