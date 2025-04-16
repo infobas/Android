@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     //comando abaixo psfs auto
     public static final String NOME_PREFERENCES = "pref_listavip";
     */
-
+    //v1 v2 v3
 
     PessoaController controller; //controladora
 
@@ -174,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         // fim tela
 
