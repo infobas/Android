@@ -19,14 +19,15 @@ import devandroid.helio.applistacursojava.controller.PessoaController;
 import devandroid.helio.applistacursojava.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-
+    //retirado para v3 e incluido em PessoaController.java
+    /*
     SharedPreferences preferences;
     //torna shared  listaVip publico
     SharedPreferences.Editor listaVip;
 
     //comando abaixo psfs auto
     public static final String NOME_PREFERENCES = "pref_listavip";
-
+    */
 
 
     PessoaController controller; //controladora
@@ -56,24 +57,31 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //retirado v3
+        /*
         //criando local temporário para informações
         preferences = getSharedPreferences(NOME_PREFERENCES,0);
         //SharedPreferences.Editor listaVip = preferences.edit();
         listaVip = preferences.edit(); //shared ficou publico acima
-
-
-        controller = new PessoaController(); //controladora
+        */
+        //abaixo foi necessário inserir MainActivity.this depois criar na luz vermelha e adicionar a sugestão
+        controller = new PessoaController(MainActivity.this); //controladora
         controller.toString();
 
 
         pessoa = new Pessoa();
+        //adicionado v3
+        controller.buscar(pessoa);
+
         //nova aula v2
+        //alterado v3
+        /*
         pessoa.setPrimeiroNome(preferences.getString("primeiroNome", ""));
         pessoa.setSobreNome(preferences.getString("sobreNome", ""));
         pessoa.setCursoDesejado(preferences.getString("nomeCurso", ""));
         pessoa.setTelefoneContato(preferences.getString("telefoneContato", ""));
         //fim v2
-
+        */
 
         //retirado para evolução da aula
         /*
@@ -124,9 +132,13 @@ public class MainActivity extends AppCompatActivity {
                 editSobrenome.setText("");
                 editNomeCurso.setText("");
                 editTelefoneContato.setText("");
-
+                //adinonado v3
+                controller.limpar();
+                //alterado v3
+                /*
                 listaVip.clear();
                 listaVip.apply();
+                */
 
             }
         });
@@ -148,14 +160,14 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelefoneContato(editTelefoneContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "SALVO!: " + pessoa.toString(), Toast.LENGTH_LONG).show();
-
-                //para salvar em local temporario
+                //retirado v3            //para salvar em local temporario
+                /*
                 listaVip.putString("primeiroNome",pessoa.getPrimeiroNome());
                 listaVip.putString("sobreNome",pessoa.getSobreNome());
                 listaVip.putString("nomeCurso",pessoa.getCursoDesejado());
                 listaVip.putString("telefoneContato",pessoa.getTelefoneContato());
                 listaVip.apply();
-
+                */
 
                 controller.salvar(pessoa);
 
