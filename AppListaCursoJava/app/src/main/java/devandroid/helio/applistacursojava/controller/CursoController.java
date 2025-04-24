@@ -3,17 +3,16 @@ package devandroid.helio.applistacursojava.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CursoDesejadoControl {
+import devandroid.helio.applistacursojava.model.Curso;
+
+public class CursoController {
 
 
     private List listCursos;
 
-    private List listCursos() {
-
-    }
 
     public List getListaCursos(){
-        listCursos() = new ArrayList<Curso>();
+        listCursos = new ArrayList<Curso>();
 
 
         listCursos.add(new Curso("Android"));
@@ -27,4 +26,19 @@ public class CursoDesejadoControl {
         return listCursos;
 
     }
+
+    public ArrayList<String> dadosParaSpinner(){
+
+        ArrayList<String> dados = new ArrayList<>();
+        for (int i = 0; i < getListaCursos().size(); i++) {
+
+            Curso objeto = (Curso) getListaCursos().get(i);
+            dados.add(objeto.getNomeDoCursoDesejado());
+
+        }
+        return dados;
+
+    }
+
+
 }

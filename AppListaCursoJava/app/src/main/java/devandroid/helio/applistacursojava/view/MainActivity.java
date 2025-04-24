@@ -1,11 +1,12 @@
 package devandroid.helio.applistacursojava.view;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +15,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
+
 import devandroid.helio.applistacursojava.R;
+import devandroid.helio.applistacursojava.controller.CursoController;
 import devandroid.helio.applistacursojava.controller.PessoaController;
 import devandroid.helio.applistacursojava.model.Pessoa;
 
@@ -31,9 +35,13 @@ public class MainActivity extends AppCompatActivity {
     //v1 v2 v3
 
     PessoaController controller; //controladora
+    CursoController cursoController;
 
     Pessoa pessoa; //classe Pessoa objeto pessoa é um tipo de dado
     //Pessoa outraPessoa; //Classe Pessoa objeto outraPessoa é usado para sets
+
+    List<String> nomeDosCursos;
+
 
     String dadosPessoa; //pascal case e camel case
     //String dadosOutraPessoa; // gets
@@ -42,9 +50,13 @@ public class MainActivity extends AppCompatActivity {
     EditText editSobrenome;
     EditText editNomeCurso;
     EditText editTelefoneContato;
+
     Button btnlimpar;
     Button btnsalvar;
     Button btnfinal;
+
+    Spinner spinner;
+
 
 
     @Override
@@ -67,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         //abaixo foi necessário inserir MainActivity.this depois criar na luz vermelha e adicionar a sugestão
         controller = new PessoaController(MainActivity.this); //controladora
         controller.toString();
+
+
 
 
         pessoa = new Pessoa();
@@ -106,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
         editNomeCurso = findViewById(R.id.editNomeCurso);
         editTelefoneContato = findViewById(R.id.editTelefoneContato);
 
+
+
         //nova aula v2
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobrenome.setText(pessoa.getSobreNome());
@@ -116,6 +132,21 @@ public class MainActivity extends AppCompatActivity {
         btnlimpar = findViewById(R.id.btnlimpar); //setando o botao limpar com a classe main activity
         btnsalvar = findViewById(R.id.btnsalvar);
         btnfinal = findViewById(R.id.btnfinal);
+
+        //adapter, layout, injetar adapter ao spinner para lista de cursos
+        cursoController = new CursoController();
+        nomeDosCursos = cursoController.dadosParaSpinner();
+
+        spinner = findViewById(R.id.spinner);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                cursoController.dadosParaSpinner());
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner.setAdapter(adapter);
+
+
+
 
         //retirado para evolução da aula
 /*
@@ -201,5 +232,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i("POO Adroid", "obj pessoa: " + pessoa.toString());
        // Log.i("POO Adroid", "obj outrapessoa: " + outraPessoa.toString());
 
+    }
+
+    private class Curso {
     }
 }

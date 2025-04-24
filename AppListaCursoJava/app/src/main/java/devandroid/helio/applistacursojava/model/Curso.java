@@ -1,25 +1,20 @@
 package devandroid.helio.applistacursojava.model;
 
-public class CursoDesejado {
+public class Curso {
 
-    private String nomeCursoDesejado;
+    private String nomeDoCursoDesejado;
 
-    /**
-     *
-     */
-    public CursoDesejado(String nomeCursoDesejado){
-        CursoDesejado cursoDesejado = this;
-        nomeCursoDesejado = nomeCursoDesejado;
-
-
+    public Curso(String nomeDoCursoDesejado) {
+        this.nomeDoCursoDesejado = nomeDoCursoDesejado;
     }
 
-    public String getNomeCursoDesejado() {
-        return nomeCursoDesejado;
+
+    public String getNomeDoCursoDesejado() {
+        return nomeDoCursoDesejado;
     }
 
-    public void setNomeCursoDesejado(String nomeCursoDesejado) {
-        this.nomeCursoDesejado = nomeCursoDesejado;
+    public void setNomeDoCursoDesejado(String nomeDoCursoDesejado) {
+        this.nomeDoCursoDesejado = nomeDoCursoDesejado;
     }
 
 
