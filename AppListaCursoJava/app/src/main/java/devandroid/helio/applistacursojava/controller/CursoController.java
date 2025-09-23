@@ -17,8 +17,8 @@ public class CursoController {
 
         listCursos.add(new Curso("Android"));
         listCursos.add(new Curso("Python"));
-        listCursos.add(new Curso("C#"));
-        listCursos.add(new Curso("Arduino"));
+        listCursos.add(new Curso("Como lidar com Cochão"));
+        listCursos.add(new Curso("Como pintar Cabelo de Boneca"));
         listCursos.add(new Curso("VB Studio"));
         listCursos.add(new Curso("CCS Compiler"));
         listCursos.add(new Curso("Assembler"));
