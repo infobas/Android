@@ -9,9 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import devandroid.helio.appgaseta.model.Combustivel;
 
-public class GasEtaDB extends SQLiteOpenHelper {
+import devandroid.helio.applistacursojava.model.Pessoa;
+
+public class ListaVipDB extends SQLiteOpenHelper {
     //i2
     private static final String DB_NAME = "listavip.db";
     private static final int DB_VERSION = 1;
@@ -23,7 +24,7 @@ public class GasEtaDB extends SQLiteOpenHelper {
     //f4
 
     //i3
-    public GasEtaDB(Context context) {
+    public ListaVipDB(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
 
         //i5
@@ -36,19 +37,17 @@ public class GasEtaDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //i6
-        String sqlTabelaCombustivel
+        String sqlTabelaPessoa
                 = "CREATE TABLE Combustivel (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nomeDoCombustivel TEXT, " +
-                "precoDoCombustivel REAL, " +
-                "recomendacao TEXT)";
+                "primeiroNome TEXT, " +
+                "sobreNome TEXT, " +
+                "cursoDesejado TEXT, " +
+                "telefoneContato TEXT)";
 
-        String sqlTabelaVeiculo
-                = "CREATE TABLE Veiculo (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nomeDoCarro TEXT, " +
-                "placaDoCarro TEXT)";
 
-        db.execSQL(sqlTabelaCombustivel);
-        db.execSQL(sqlTabelaVeiculo);
+
+        db.execSQL(sqlTabelaPessoa);
+
 
     }
 
@@ -63,19 +62,20 @@ public class GasEtaDB extends SQLiteOpenHelper {
 
     }
 
-    public List<Combustivel> listarDados(){
+    public List<Pessoa> listarDados(){
 
-        List<Combustivel> lista = new ArrayList<>();
-        Combustivel registro;
-        String querySQL = "SELECT * from Combustivel";
+        List<Pessoa> lista = new ArrayList<>();
+        Pessoa registro;
+        String querySQL = "SELECT * from Pessoa";
         cursor = db.rawQuery(querySQL,null);
         if (cursor.moveToFirst()){
             do{
-                registro = new Combustivel();
+                registro = new Pessoa();
                 registro.setId(cursor.getInt(0));
-                registro.setNomeDoCombustivel(cursor.getString(1));
-                registro.setPrecoDoCombustivel(cursor.getDouble(2));
-                registro.setRecomendacao(cursor.getString(3));
+                registro.setPrimeiroNome(cursor.getString(1));
+                registro.setSobreNome(cursor.getString(2));
+                registro.setTelefoneContato(cursor.getString(3));
+                registro.setCursoDesejado(cursor.getString(4));
 
                 lista.add(registro);
 
